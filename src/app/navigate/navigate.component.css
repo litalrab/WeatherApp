@@ -1,0 +1,30 @@
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: pink;
+}
+nav a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+ul {
+    display: grid;
+    width: 30%;
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    /* justify-content: center; */
+    grid-column-gap: 3em;
+    /* margin-left: 100px; */
+    margin-left: auto;
+    margin-right: auto;
+    grid-column-start: 10px;
+
+}
+ul li {
+    display: inline;
+}
+
+nav a.current-page {
+    font-weight: normal;
+}

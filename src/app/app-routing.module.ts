@@ -1,10 +1,23 @@
 import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { WeatherComponent } from './weather/weather.component';
 
-const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: WeatherComponent, pathMatch: 'full' },
+  { path: 'favorites', component: FavoritesComponent },
+  { path: 'weather/:cityname', component: WeatherComponent },
+
+
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [],
+  imports: [
+    RouterModule.forRoot(routes)
+    // CommonModule
+  ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,26 @@
+<form id="searchForm" (submit)="searchMovie($event, query)">
+  <input type="text" placeholder="Enter city name..." #query />
+  <button type="submit">Search</button>
+</form>
+
+<div class="content ">
+  <div>
+    
+      <app-currerntWeather  class="text-t" [location]="currentLocation" [isRedirectFromFav]="isRedirectFromFav"></app-currerntWeather>
+      <button type="button"  (click)="onFavoritesClick()">
+          <!-- {{isClicked| async}} -->
+          {{ isClicked ? "Remove From Favorites" : "Add To Favorites" }}
+        </button>
+  </div>
+
+  <div id="l">
+    <div id="movie-details" *ngFor="let currentDay of fiveDaysWeather">
+      <app-daily-weather class="text-t"[dailyWeather]="currentDay"></app-daily-weather>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <app-favorites></app-favorites> -->
