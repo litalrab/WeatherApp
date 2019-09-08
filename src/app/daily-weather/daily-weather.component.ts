@@ -12,7 +12,7 @@ import { weather } from '../location.model';
   `],
 })
 export class DailyWeatherComponent implements OnInit {
-  @Input() dailyWeather: Location;
+  @Input() dailyWeather: weather;
   constructor() {
    }
 

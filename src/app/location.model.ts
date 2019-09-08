@@ -2,13 +2,26 @@ export interface Location {
     CityName: string;
     WeatherText	: string;
     WeatherIcon:number;
-    Temperature: object;
+    Temperature: {
+    Metric:{
+        Value:number;
+        Unit: string;
+
+    }
+    };
 }
 
 export interface weather {
     // LocalizedName: string;
     day	: string;
-    Temperature: object;
+    Temperature: {
+        Minimum:{
+            Value:number;
+            Unit: string;
+
+        }
+        
+    };
     icon : string;  
     desc : string;
 }

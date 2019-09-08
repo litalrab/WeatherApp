@@ -1,12 +1,12 @@
-<!-- <div id="favorites" [className]="isMenuOpen ? '' : 'closed'">
+<div id="favorites" [className]="isMenuOpen ? '' : 'closed'">
   <div id="favorites-header" (click)="toggleFavorites()">Favorites</div>
   <ul>
     
     <li *ngFor="let favorite of favorites">
-      <app-currerntWeather  class="text-t"[location]="favorite" ></app-currerntWeather>
+      <app-currerntWeather  class="text-t"[location]="favorite.currernt" ></app-currerntWeather>
     </li>
   </ul>
-</div> -->
+</div>
 
 <!-- <div class="l" *ngIf="favorites | async" > -->
     <div id="movie-details" *ngFor="let favorite of favorites  ">
