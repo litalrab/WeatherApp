@@ -2,7 +2,6 @@ import { Component, SimpleChanges, OnChanges } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { Location, weather } from '../location.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FavoritesService } from '../favorites.service';
 import * as WeatherActions from '../actions/weather.actions'
 import { favState, AppState } from '../app.state';
 import { Store } from '@ngrx/store';
@@ -22,19 +21,14 @@ export class WeatherComponent implements OnChanges {
   favorites: any;
 
   constructor(
-    private weatherService: WeatherService, private activatedRoute: ActivatedRoute, private router: Router, private store: Store<AppState>,
+    private weatherService: WeatherService, private activatedRoute: ActivatedRoute,  private store: Store<AppState>,
 
   ) {
     this.search = "";
-    // this.l=          this.isClicked ? "Remove From Favorites" : "Add To Favorites";
-
     this.initDefaultValues();
   }
-  changeQuery() {
-    this.router.navigate(['.'], { relativeTo: this.activatedRoute, queryParams: {} });
-    
-  }
-  // 3. logic
+
+
   ngOnChanges(changes: SimpleChanges) {
   //   console.log("loc+ "+changes);
 
@@ -50,8 +44,6 @@ export class WeatherComponent implements OnChanges {
       console.log(this.activatedRoute.snapshot.params.cityname);
       this.activatedRoute.snapshot.params.cityname ? this.loadFromState(this.activatedRoute.snapshot.params.cityname) : this.findMe();
 
-      // this.activatedRoute.snapshot.params.cityname ? this.loadWeather(this.activatedRoute.snapshot.params.cityname) : this.findMe();
-      // this.changeQuery();
     }
 
   }
@@ -60,24 +52,21 @@ export class WeatherComponent implements OnChanges {
       this.currentLocation = s.favs.find(x => x.currernt.CityName == cityname).currernt;
       this.fiveDaysWeather = s.favs.find(x => x.currernt.CityName == cityname).nextDays;
       this.isClicked= true;
-
-      // this.store.dispatch(new WeatherActions.CheckIfExists(this.currentLocation));
-      // this.store.select("location").subscribe(s => this.isClicked = s.isfav)
     }).unsubscribe();
-
-
-
   }
+
   findMe() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.weatherService.loadgeolocation(position).subscribe(data => {
+          let locationKey = data["Key"];
           this.currentLocation = {
             CityName: this.weatherService.cityName,
             Temperature: data['GeoPosition']['Elevation'],
             WeatherText: "",
             WeatherIcon: 0
           }
+          this.loadFiveDays(locationKey);
         })
       },
         (error) => {

@@ -11,12 +11,9 @@ import { weather } from '../location.model';
     }
   `],
 })
-export class DailyWeatherComponent implements OnInit {
+export class DailyWeatherComponent  {
   @Input() dailyWeather: weather;
   constructor() {
    }
-
-  ngOnInit() {
-  }
 
 }

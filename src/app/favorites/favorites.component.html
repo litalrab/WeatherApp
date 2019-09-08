@@ -1,17 +1,16 @@
 <div id="favorites" [className]="isMenuOpen ? '' : 'closed'">
   <div id="favorites-header" (click)="toggleFavorites()">Favorites</div>
   <ul>
-    
     <li *ngFor="let favorite of favorites">
-      <app-currerntWeather  class="text-t"[location]="favorite.currernt" ></app-currerntWeather>
+      <app-currerntWeather class="text-center" [location]="favorite.currernt"></app-currerntWeather>
     </li>
   </ul>
 </div>
 
 <!-- <div class="l" *ngIf="favorites | async" > -->
-    <div id="movie-details" *ngFor="let favorite of favorites  ">
-        <a routerLink="/weather/{{favorite.currernt.CityName}}"> go to main</a>
-        <app-currerntWeather  class="text-t"[location]="favorite.currernt" ></app-currerntWeather>
-      </div>
+<div id="weather-details" *ngFor="let favorite of favorites  ">
+  <a routerLink="/weather/{{favorite.currernt.CityName}}"> go to main</a>
+  <app-currerntWeather class="text-center" [location]="favorite.currernt"></app-currerntWeather>
+</div>
 
 <!-- </div> -->

@@ -45,7 +45,6 @@ export class WeatherService {
     const url = `${FiveDayseUrl}${locationKey}${QueryURL}&metric=true`;
     return fetch(url).then(response => response.json());
   }
-
   
   loadCurrWeather(locationKey): Observable<any>  {
 
@@ -58,35 +57,8 @@ export class WeatherService {
   }
 
   loadWeather(search: string): Observable<any> {
-    const searchurl = `${this.autocompleteUrl}${this.queryURL}&q=${search}`;
-   
-    
+    const searchurl = `${this.autocompleteUrl}${this.queryURL}&q=${search}`;   
    return this.http.get(searchurl);
-
-    // return this.http.get(searchurl).pipe(
-    //   mergeMap((character: any) => {
-    //     this.cityName = character[0]["LocalizedName"];
-    //     this.locationKey = character[0]["Key"];
-
-    //     return this.http.get(`${CurrentlocationeUrl}${this.locationKey}${QueryURL}`).pipe(
-    //       map((data: any) => {
-
-    //         return data;
-    //       })
-    //     )
-    //   }
-    //   ));
-
-
-    //  return this.http.get(searchurl).pipe(
-    //     mergeMap((character:any) =>  this.http.get(`${CurrentlocationeUrl}${character[0]["Key"]}${QueryURL}`))
-    //   )//.subscribe(val => console.log('mergeMap:', val));;
-
-    //   return this.http.get(searchurl).subscribe(character => {
-    //     console.log('mergeMap:', character);
-
-    //        this.http.get(`${CurrentlocationeUrl}${character[0]["Key"]}${QueryURL}`)
-    //   });
 
   }
 }

@@ -1,16 +1,13 @@
-<div class="z">
-    <div class="movie">
+<div class="daily-weather">
+    <div class="weather">
         {{dailyWeather?.day}}
-
-
     </div>
     <div>
         {{dailyWeather?.Temperature.Minimum.Value}}
         {{dailyWeather?.Temperature.Minimum.Unit }}
-
     </div>
     <div>
-<img src="assets/{{dailyWeather?.icon}}.png" alt="">
+        <img src="assets/{{dailyWeather?.icon}}.png" alt="">
     </div>
     <div>
         {{dailyWeather?.desc}}

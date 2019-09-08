@@ -3,19 +3,19 @@
   <button type="submit">Search</button>
 </form>
 
-<div class="content ">
+<div class="content">
   <div>
-    
-      <app-currerntWeather  class="text-t" [location]="currentLocation" [isRedirectFromFav]="isRedirectFromFav"></app-currerntWeather>
-      <button type="button"  (click)="onFavoritesClick()">
-          <!-- {{isClicked| async}} -->
-          {{ isClicked ? "Remove From Favorites" : "Add To Favorites" }}
-        </button>
+    <app-currerntWeather class="text-center" [location]="currentLocation" [isRedirectFromFav]="isRedirectFromFav">
+      <button type="button" (click)="onFavoritesClick()">
+        {{ isClicked ? "Remove From Favorites" : "Add To Favorites" }}
+      </button>
+    </app-currerntWeather>
+   
   </div>
 
-  <div id="l">
-    <div id="movie-details" *ngFor="let currentDay of fiveDaysWeather">
-      <app-daily-weather class="text-t"[dailyWeather]="currentDay"></app-daily-weather>
+  <div id="daily-Weather-wrapper">
+    <div id="weather-details" *ngFor="let currentDay of fiveDaysWeather">
+      <app-daily-weather class="text-center" [dailyWeather]="currentDay"></app-daily-weather>
     </div>
   </div>
 </div>
