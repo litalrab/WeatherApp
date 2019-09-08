@@ -1,7 +1,5 @@
-// const apiKey = `PTxFSt4edlvbk56N52GsGmafAL4ndFcr`;
 const apiKey = `4y1LOBRNzXZ8NAjQ2DgadzXK0cQG9q5J`;
 // const apiKey = `33fTfLndF5EtGK9wXcMLAz1A38OhudSJ`;
-// 
 
 const searchLanguage = `en-us`;
 export const rootUrl = `http://dataservice.accuweather.com/`;
