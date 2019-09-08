@@ -19,12 +19,14 @@ export class WeatherComponent implements OnChanges {
   isRedirectFromFav: boolean;
   isClicked: boolean;
   favorites: any;
-
+  DEFULT_CITY: string;
+  
   constructor(
     private weatherService: WeatherService, private activatedRoute: ActivatedRoute,  private store: Store<AppState>,
 
   ) {
     this.search = "";
+    this.DEFULT_CITY="tel-aviv";
     this.initDefaultValues();
   }
 
@@ -71,13 +73,13 @@ export class WeatherComponent implements OnChanges {
       },
         (error) => {
           console.log("Geolocation is not supported by this browser" + error.message);
-          this.loadWeather("tel-aviv");
+          this.loadWeather(this.DEFULT_CITY);
         }
       );
     }
     else {
       console.log("Geolocation is not supported by this browser.");
-      this.loadWeather("tel-aviv");
+      this.loadWeather(this.DEFULT_CITY);
     }
   }
 
@@ -92,7 +94,7 @@ export class WeatherComponent implements OnChanges {
   searchMovie(e: Event, input: HTMLInputElement) {
     e.preventDefault();
     this.initDefaultValues();
-    this.search = input.value == "" ? "tel-aviv" : input.value;
+    this.search = input.value == "" ? this.DEFULT_CITY : input.value;
     this.loadWeather(this.search);
     this.search = "";
   }
